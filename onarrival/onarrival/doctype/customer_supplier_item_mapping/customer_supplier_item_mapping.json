@@ -1,0 +1,98 @@
+{
+ "actions": [],
+ "autoname": "format:{customer}-{supplier}",
+ "creation": "2022-02-03 20:06:34.802607",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "customer",
+  "supplier",
+  "map_only_specific_items",
+  "customer_supplier_specific_item_map"
+ ],
+ "fields": [
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Supplier",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "map_only_specific_items",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Map Only Specific Items",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.map_only_specific_items==1",
+   "fieldname": "customer_supplier_specific_item_map",
+   "fieldtype": "Table",
+   "label": "Customer Supplier Specific Item Map",
+   "mandatory_depends_on": "eval:doc.map_only_specific_items==1",
+   "options": "Customer Supplier Specific Item Map"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-02-15 09:33:03.639846",
+ "modified_by": "Administrator",
+ "module": "Onarrival",
+ "name": "Customer Supplier Item Mapping",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

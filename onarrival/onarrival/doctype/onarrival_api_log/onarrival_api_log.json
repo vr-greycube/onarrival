@@ -1,0 +1,170 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2022-02-03 20:17:09.703289",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "customer",
+  "status",
+  "is_billed",
+  "sales_invoice",
+  "column_break_6",
+  "supplier",
+  "item_code",
+  "item_name",
+  "transaction_date_time",
+  "to_bill",
+  "supplier_charge",
+  "section_break_12",
+  "raw_json_data"
+ ],
+ "fields": [
+  {
+   "default": "OAL.#",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "OAL.#",
+   "reqd": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Completed\nCancelled\nIn Progress",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sales_invoice",
+   "fieldtype": "Link",
+   "label": "Sales Invoice",
+   "options": "Sales Invoice",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Supplier",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "transaction_date_time",
+   "fieldtype": "Datetime",
+   "label": "Transaction Date Time",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "to_bill",
+   "fieldtype": "Check",
+   "label": "To Bill",
+   "reqd": 1
+  },
+  {
+   "fieldname": "supplier_charge",
+   "fieldtype": "Currency",
+   "label": "Supplier Charge",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_12",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "raw_json_data",
+   "fieldtype": "Code",
+   "label": "Raw JSON Data"
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Item Code",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "item_code.item_name",
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "label": "Item Name",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_billed",
+   "fieldtype": "Check",
+   "label": "Is Billed",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-02-15 09:55:02.581498",
+ "modified_by": "Administrator",
+ "module": "Onarrival",
+ "name": "OnArrival API Log",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

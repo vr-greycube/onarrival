@@ -1,0 +1,93 @@
+{
+ "actions": [],
+ "creation": "2022-02-03 20:22:23.314339",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "supplier_customer_group",
+  "billing_section",
+  "from_date",
+  "to_date",
+  "only_for_customer",
+  "only_for_supplier",
+  "generate_sales_invoice",
+  "automation_response"
+ ],
+ "fields": [
+  {
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "label": "From Date"
+  },
+  {
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "label": "To Date"
+  },
+  {
+   "fieldname": "generate_sales_invoice",
+   "fieldtype": "Button",
+   "label": "Generate Sales Invoice"
+  },
+  {
+   "fieldname": "automation_response",
+   "fieldtype": "HTML",
+   "label": "Automation Response"
+  },
+  {
+   "description": "Supplier is also a customer for OnArrival , will be used to filter suppliers/customers",
+   "fieldname": "supplier_customer_group",
+   "fieldtype": "Link",
+   "label": "Supplier Customer Group",
+   "options": "Customer Group"
+  },
+  {
+   "fieldname": "billing_section",
+   "fieldtype": "Section Break",
+   "label": "Billing"
+  },
+  {
+   "fieldname": "only_for_customer",
+   "fieldtype": "Link",
+   "label": "Only for Customer",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "only_for_supplier",
+   "fieldtype": "Link",
+   "label": "Only for Supplier",
+   "options": "Customer"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2022-02-14 11:07:34.644436",
+ "modified_by": "Administrator",
+ "module": "Onarrival",
+ "name": "OnArrival Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Accounts Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

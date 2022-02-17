@@ -36,8 +36,8 @@ frappe.query_reports["Mapped Item Supplier"] = {
 	],
 	"formatter": function (value, row, column, data, default_formatter) {
 		value = default_formatter(value, row, column, data);
-		if (data && column.fieldname == "item_name") {
-			value = frappe.utils.get_form_link('Item', data.item_code, true, value)
+		if (value && data && column.fieldname == "item_name") {
+			value = frappe.utils.get_form_link('Item', data.item, true, value)
 		}
 		return value;
 	},

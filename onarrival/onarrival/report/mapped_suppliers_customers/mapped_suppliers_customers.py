@@ -15,17 +15,18 @@ def get_data(filters):
     data = frappe.db.sql(
         """
 			select 
-				toal.customer, tc.customer_group, 
-				toal.supplier, sup.customer_group supplier_group
+				tcsim.customer, tc.customer_group, 
+				tcsim.supplier, sup.customer_group supplier_group,
+                date(tcsim.creation) creation 
 			from 
-				`tabOnArrival API Log` toal 
-				inner join tabCustomer tc on tc.name = toal.customer
-				inner join tabCustomer sup on sup.name = toal.supplier
+				`tabCustomer Supplier Item Mapping` tcsim 
+				inner join tabCustomer tc on tc.name = tcsim.customer
+				inner join tabCustomer sup on sup.name = tcsim.supplier
 				{conditions}
 			group by 
-				toal.customer, tc.customer_group, toal.supplier, sup.customer_group
+				tcsim.customer, tc.customer_group, tcsim.supplier, sup.customer_group
 			order by 
-				toal.customer, tc.customer_group, toal.supplier, sup.customer_group
+				tcsim.customer, tc.customer_group, tcsim.supplier, sup.customer_group
         """.format(conditions=conditions), filters, as_dict=True, )
 
     return data
@@ -57,6 +58,12 @@ def get_columns(filters):
             "fieldname": "supplier_group",
             "width": 220
         },
+        {
+            "label": _("Creation"),
+            "fieldtype": "Date",
+            "fieldname": "creation",
+            "width": 220
+        },
     ]
 
     return columns
@@ -66,8 +73,8 @@ def get_conditions(filters):
     conditions = []
 
     if filters.customer:
-        conditions.append("toal.customer = %(customer)s")
+        conditions.append("tcsim.customer = %(customer)s")
     if filters.supplier:
-        conditions.append("toal.supplier = %(supplier)s")
+        conditions.append("tcsim.supplier = %(supplier)s")
 
     return conditions and " where " + " and ".join(conditions) or ""

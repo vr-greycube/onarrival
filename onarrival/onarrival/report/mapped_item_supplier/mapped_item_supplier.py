@@ -15,19 +15,19 @@ def get_data(filters):
     data = frappe.db.sql(
         """
 			select 
-				toal.customer, tc.customer_group, 
-				toal.supplier, sup.customer_group supplier_group, toal.item_name, toal.item_code
+				tcsim.customer, tc.customer_group, 
+				tcsim.supplier, sup.customer_group supplier_group,
+                coalesce(im.item,'') item, coalesce(im.item_name,'') item_name
 			from 
-				`tabOnArrival API Log` toal 
-				inner join tabCustomer tc on tc.name = toal.customer
-				inner join tabCustomer sup on sup.name = toal.supplier
+				`tabCustomer Supplier Item Mapping` tcsim 
+                left outer join `tabCustomer Supplier Specific Item Map` im on im.parent = tcsim.name 
+				inner join tabCustomer tc on tc.name = tcsim.customer
+				inner join tabCustomer sup on sup.name = tcsim.supplier
 				{conditions}
 			group by 
-				toal.customer, tc.customer_group, toal.supplier, sup.customer_group,
-				toal.item_name, toal.item_code
+				tcsim.customer, tc.customer_group, tcsim.supplier, sup.customer_group
 			order by 
-				toal.customer, tc.customer_group, toal.supplier, sup.customer_group,
-				toal.item_name, toal.item_code
+				tcsim.customer, tc.customer_group, tcsim.supplier, sup.customer_group
         """.format(conditions=conditions), filters, as_dict=True, )
 
     return data
@@ -73,8 +73,8 @@ def get_conditions(filters):
     conditions = []
 
     if filters.customer:
-        conditions.append("toal.customer = %(customer)s")
+        conditions.append("tcsim.customer = %(customer)s")
     if filters.supplier:
-        conditions.append("toal.supplier = %(supplier)s")
+        conditions.append("tcsim.supplier = %(supplier)s")
 
     return conditions and " where " + " and ".join(conditions) or ""
